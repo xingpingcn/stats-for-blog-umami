@@ -4,6 +4,7 @@ import Bars from 'assets/bars.svg';
 import BarChart from 'assets/bar-chart.svg';
 import Bolt from 'assets/bolt.svg';
 import Calendar from 'assets/calendar.svg';
+import Change from 'assets/change.svg';
 import Clock from 'assets/clock.svg';
 import Dashboard from 'assets/dashboard.svg';
 import Eye from 'assets/eye.svg';
@@ -22,13 +23,14 @@ import User from 'assets/user.svg';
 import Users from 'assets/users.svg';
 import Visitor from 'assets/visitor.svg';
 
-const icons: any = {
+const icons = {
   ...Icons,
   AddUser,
   Bars,
   BarChart,
   Bolt,
   Calendar,
+  Change,
   Clock,
   Dashboard,
   Eye,

@@ -10,6 +10,7 @@ import {
 } from './constants';
 import * as yup from 'yup';
 import { TIME_UNIT } from './date';
+import { Dispatch, SetStateAction } from 'react';
 
 type ObjectValues<T> = T[keyof T];
 
@@ -38,10 +39,13 @@ export interface TeamSearchFilter extends SearchFilter {
   userId?: string;
 }
 
+export interface TeamUserSearchFilter extends SearchFilter {
+  teamId?: string;
+}
+
 export interface ReportSearchFilter extends SearchFilter {
   userId?: string;
   websiteId?: string;
-  includeTeams?: boolean;
 }
 
 export interface SearchFilter {
@@ -59,6 +63,13 @@ export interface FilterResult<T> {
   pageSize: number;
   orderBy?: string;
   sortDescending?: boolean;
+}
+
+export interface FilterQueryResult<T> {
+  result: FilterResult<T>;
+  query: any;
+  params: SearchFilter;
+  setParams: Dispatch<SetStateAction<T | SearchFilter>>;
 }
 
 export interface DynamicData {
@@ -176,11 +187,12 @@ export interface RealtimeUpdate {
 }
 
 export interface DateRange {
+  value: string;
   startDate: Date;
   endDate: Date;
-  value: string;
   unit?: TimeUnit;
-  selectedUnit?: TimeUnit;
+  num?: number;
+  offset?: number;
 }
 
 export interface QueryFilters {
@@ -201,9 +213,20 @@ export interface QueryFilters {
   city?: string;
   language?: string;
   event?: string;
+  search?: string;
 }
 
 export interface QueryOptions {
   joinSession?: boolean;
   columns?: { [key: string]: string };
+  limit?: number;
+}
+
+export interface RealtimeData {
+  pageviews: any[];
+  sessions: any[];
+  events: any[];
+  timestamp: number;
+  countries?: any[];
+  visitors?: any[];
 }
